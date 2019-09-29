@@ -13,11 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::group([
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
 });
-Route::get('/mahasiswa','MahasiswaController@index');
-Route::get('/mahasiswa/{id}','MahasiswaController@show');
-Route::post('/mahasiswa','MahasiswaController@store');
-Route::put('/mahasiswa/{id}','MahasiswaController@update');
-Route::delete('/mahasiswa/{id}','MahasiswaController@destroy');
+
+Route::get('/mahasiswa', 'MahasiswaController@index');
+Route::get('/mahasiswa/{id}', 'MahasiswaController@show');
+Route::post('/mahasiswa', 'MahasiswaController@store');
+Route::put('/mahasiswa/{id}', 'MahasiswaController@update');
+Route::delete('/mahasiswa/{id}', 'MahasiswaController@destroy');
