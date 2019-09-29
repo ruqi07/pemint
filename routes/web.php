@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
+Route::get('/mahasiswa', 'MahasiswaController@index');
 
 // Route::group(['prefix' => 'api'], function () {
 //     Route::get('mahasiswa', 'MahasiswaController@index');
@@ -22,3 +21,4 @@ Route::get('/', function () {
 //     Route::put('mahasiswa/{id}', 'MahasiswaController@update');
 //     Route::delete('mahasiswa/{id}', 'MahasiswaController@delete');
 // });
+?>

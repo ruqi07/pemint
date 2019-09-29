@@ -27,7 +27,7 @@ Route::group([
     Route::post('me', 'AuthController@me');
 });
 
-Route::get('/mahasiswa', 'MahasiswaController@index');
+Route::get('/mahasiswa', 'MahasiswaController@all');
 Route::get('/mahasiswa/{id}', 'MahasiswaController@show');
 Route::post('/mahasiswa', 'MahasiswaController@store');
 Route::put('/mahasiswa/{id}', 'MahasiswaController@update');

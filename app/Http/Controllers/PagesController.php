@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mahasiswa;
 
-
-class MahasiswaController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +13,9 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::all();
-        return view('mahasiswa.index', ['mahasiswa' => $mahasiswa]);
+        return view('index');
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -28,12 +26,6 @@ class MahasiswaController extends Controller
         //
     }
 
-    //get all mahasiswa
-    public function all()
-    {
-        $mahasiswa = Mahasiswa::all();
-        return response()->json($mahasiswa);
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -42,10 +34,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $pass['password'] = password_hash($request->password, PASSWORD_DEFAULT);
-        $request->merge($pass);
-        Mahasiswa::create($request->all());
-        return response()->json(['message' => 'mahasiswa berhasil ditambahkan!']);
+        //
     }
 
     /**
@@ -56,8 +45,7 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        $mahasiswa = Mahasiswa::find($id);
-        return response()->json($mahasiswa); 
+        //
     }
 
     /**
@@ -80,12 +68,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mahasiswa = Mahasiswa::find($id);
-        $pass['password'] = password_hash($request->password, PASSWORD_DEFAULT);
-        $request->merge($pass);
-        $mahasiswa->update($request->all());
-        return response()->json(['message' => 'mahasiswa berhasil diedit!']);
-        return $request->all();
+        //
     }
 
     /**
@@ -96,8 +79,6 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        $mahasiswa = Mahasiswa::find($id);
-        $mahasiswa->delete();
-        return response()->json(['message' => 'mahasiswa berhasil dihapus!']);
+        //
     }
 }
